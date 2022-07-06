@@ -1,8 +1,8 @@
 const db = require('../database');
-const ActeurRepository = require('../repository/ActeursRepository');
+const ActorRepository = require('../repository/ActorRepository');
 
-exports.acteur_list = (req, res) => {
-    const repo = new ActeurRepository(db);
+exports.list = (req, res) => {
+    const repo = new ActorRepository(db);
     repo.list()
         .then((result) => {
             res.json({
@@ -13,10 +13,13 @@ exports.acteur_list = (req, res) => {
         .catch((err) => {
             res.status(500).json({ error: err.message });
         });
+        
+        
 };
 
-exports.acteur_get = (req, res) => {
-    const repo = new ActeurRepository(db);
+
+exports.get = (req, res) => {
+    const repo = new ActorRepository(db);
     repo.get(req.params.id)
         .then((result) => {
             res.json({
@@ -29,7 +32,7 @@ exports.acteur_get = (req, res) => {
         });
 };
 
-exports.acteur_create = (req, res) => {
+exports.create = (req, res) => {
     const errors = [];
     ['contents', 'done'].forEach((field) => {
         if (!req.body[field]) {
@@ -44,7 +47,7 @@ exports.acteur_create = (req, res) => {
         return;
     }
 
-    const repo = new ActeurRepository(db);
+    const repo = new ActorRepository(db);
 
     repo.create({
         contents: req.body.contents,
@@ -63,7 +66,7 @@ exports.acteur_create = (req, res) => {
         });
 };
 
-exports.acteur_update = (req, res) => {
+exports.update = (req, res) => {
     const errors = [];
     ['contents', 'done'].forEach((field) => {
         if (!req.body[field]) {
@@ -78,7 +81,7 @@ exports.acteur_update = (req, res) => {
         return;
     }
 
-    const repo = new ActeurRepository(db);
+    const repo = new ActorRepository(db);
 
     repo.update(
         req.params.id,
@@ -101,8 +104,8 @@ exports.acteur_update = (req, res) => {
         });
 };
 
-exports.acteur_delete = (req, res) => {
-    const repo = new ActeurRepository(db);
+exports.delete = (req, res) => {
+    const repo = new ActorRepository(db);
 
     repo.delete(req.params.id)
         .then(() => {

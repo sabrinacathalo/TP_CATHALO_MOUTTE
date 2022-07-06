@@ -1,14 +1,14 @@
 const express = require('express');
-const ActeurController = require('./controllers/ActeurController');
+const ActorController = require('./controllers/ActorController');
 const GenreController = require('./controllers/GenreController')
 
 const router = express.Router();
 
-/*router.get('/actor', ActeurController.acteur_list);
-router.get('/actor/:id', ActeurController.acteur_get);
-router.post('/actor', ActeurController.acteur_create);
-router.put('/actor/:id', ActeurController.acteur_update);
-router.delete('/actor/:id', ActeurController.acteur_delete);*/
+router.get('/actor', ActorController.list);
+router.get('/actor/:id', ActorController.get);
+router.post('/actor', ActorController.create);
+router.put('/actor/:id', ActorController.update);
+router.delete('/actor/:id', ActorController.delete);
 
 router.get('/genre', GenreController.list);
 router.post('/genre', GenreController.create);

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable func-names */
-class ActeursRepository {
+class ActorRepository {
     constructor(database) {
         this.database = database;
     }
@@ -13,16 +13,15 @@ class ActeursRepository {
                     reject(err);
                 } else {
                     resolve(
-                        rows.map((row) => this.decorator(row)),
+                        rows,
                     );
                 }
             });
         });
-    }
-
+    }/*
     get(id) {
         return new Promise((resolve, reject) => {
-            this.database.get('SELECT * FROM todo WHERE id = ?', [id], (err, row) => {
+            this.database.get('SELECT * FROM actors WHERE id = ?', [id], (err, row) => {
                 if (err) {
                     console.error(err.message);
                     reject(err);
@@ -38,7 +37,7 @@ class ActeursRepository {
     create(data) {
         return new Promise((resolve, reject) => {
             this.database.run(
-                'INSERT INTO todo (contents, done) VALUES (?,?)',
+                'INSERT INTO actors (contents, done) VALUES (?,?)',
                 [data.contents, data.done ? 1 : 0],
                 function (err) {
                     if (err) {
@@ -55,7 +54,7 @@ class ActeursRepository {
     update(id, data) {
         return new Promise((resolve, reject) => {
             this.database.run(
-                `UPDATE todo
+                `UPDATE actors
                  SET contents = ?,
                      done = ?
                  WHERE id = ?`,
@@ -75,7 +74,7 @@ class ActeursRepository {
     delete(id) {
         return new Promise((resolve, reject) => {
             this.database.run(
-                `DELETE FROM todo
+                `DELETE FROM actors
                  WHERE id = ?`,
                 [id],
                 (err) => {
@@ -89,14 +88,14 @@ class ActeursRepository {
             );
         });
     }
-
+/*
     // eslint-disable-next-line class-methods-use-this
     decorator(todo) {
         return {
             ...todo,
             done: todo.done === 1,
         };
-    }
+    }*/
 }
 
-module.exports = ActeursRepository;
+module.exports = ActorRepository;

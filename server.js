@@ -11,3 +11,11 @@ app.listen(HTTP_PORT, () => {
 app.get('/', (req, res) => {
     res.json({message: 'Hello World'});
 });
+
+// Routes "Todo"
+app.use('/api', Routes);
+
+// Fallback route
+app.use((req, res) => {
+    res.status(404);
+});

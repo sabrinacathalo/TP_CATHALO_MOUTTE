@@ -5,20 +5,21 @@ class GenreRepository {
 
     list() {
         return new Promise((resolve, reject) => {
+            console.log("TEST");
             this.database.all('SELECT * FROM genres', [], (err, rows) => {
                 if (err) {
                     console.error(err.message);
                     reject(err);
                 } else {
                     resolve(
-                        rows.map((row) => this.decorator(row)),
+                        rows,
                     );
                 }
             });
         });
     }
 
-    create(data) {
+   create(data) {
         return new Promise((resolve, reject) => {
             this.database.run(
                 'INSERT INTO genres (id, name) VALUES (?,?)',
@@ -35,7 +36,7 @@ class GenreRepository {
         });
     }
 
-    delete(id) {
+    /*delete(id) {
         return new Promise((resolve, reject) => {
             this.database.run(
                 `DELETE FROM genres
@@ -51,7 +52,7 @@ class GenreRepository {
                 },
             );
         });
-    }
+    }*/
 }
 
 module.exports = GenreRepository;

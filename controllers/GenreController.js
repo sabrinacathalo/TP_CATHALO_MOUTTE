@@ -1,8 +1,8 @@
 const db = require('../database');
-const genreRepository = require('../repository/GenreRepository');
+const GenreRepository = require('../repository/GenreRepository');
 
 exports.list = (req, res) => {
-    const repo = new genreRepository(db);
+    const repo = new GenreRepository(db);
     repo.list()
         .then((result) => {
             res.json({
@@ -49,7 +49,7 @@ exports.create = (req, res) => {
         });
 };
 
-exports.delete = (req, res) => {
+/*exports.delete = (req, res) => {
     const repo = new GenreRepository(db);
     repo.delete(req.params.id)
         .then(() => {
@@ -61,4 +61,4 @@ exports.delete = (req, res) => {
         .catch((err) => {
             res.status(400).json({ error: err.message });
         });
-};
+};*/

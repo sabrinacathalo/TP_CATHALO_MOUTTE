@@ -7,7 +7,7 @@ class ActeursRepository {
 
     list() {
         return new Promise((resolve, reject) => {
-            this.database.all('SELECT * FROM todo', [], (err, rows) => {
+            this.database.all('SELECT * FROM actors', [], (err, rows) => {
                 if (err) {
                     console.error(err.message);
                     reject(err);

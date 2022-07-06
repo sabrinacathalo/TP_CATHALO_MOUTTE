@@ -1,5 +1,5 @@
 const db = require('../database');
-const ActeurRepository = require('../repository/ActeurRepository');
+const ActeurRepository = require('../repository/ActeursRepository');
 
 exports.acteur_list = (req, res) => {
     const repo = new ActeurRepository(db);

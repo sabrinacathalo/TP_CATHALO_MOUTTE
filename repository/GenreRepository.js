@@ -1,4 +1,4 @@
-class TodoRepository {
+class GenreRepository {
     constructor(database) {
         this.database = database;
     }
@@ -54,4 +54,4 @@ class TodoRepository {
     }
 }
 
-module.exports = TodoRepository;
+module.exports = GenreRepository;

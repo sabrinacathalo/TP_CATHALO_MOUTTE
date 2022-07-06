@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable func-names */
-class ActeurRepository {
+class ActeursRepository {
     constructor(database) {
         this.database = database;
     }
@@ -99,4 +99,4 @@ class ActeurRepository {
     }
 }
 
-module.exports = TodoRepository;
+module.exports = ActeursRepository;

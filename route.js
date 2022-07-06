@@ -12,6 +12,6 @@ router.delete('/actor/:id', ActorController.delete);
 
 router.get('/genre', GenreController.list);
 router.post('/genre', GenreController.create);
-/*router.delete('/genre/:id', GenreController.delete);*/
+router.delete('/genre/:id', GenreController.delete);
 
 module.exports = router;

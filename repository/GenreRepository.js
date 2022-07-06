@@ -36,7 +36,7 @@ class GenreRepository {
         });
     }
 
-    /*delete(id) {
+    delete(id) {
         return new Promise((resolve, reject) => {
             this.database.run(
                 `DELETE FROM genres
@@ -52,7 +52,7 @@ class GenreRepository {
                 },
             );
         });
-    }*/
+    }
 }
 
 module.exports = GenreRepository;

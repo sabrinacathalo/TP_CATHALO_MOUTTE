@@ -49,7 +49,7 @@ exports.create = (req, res) => {
         });
 };
 
-/*exports.delete = (req, res) => {
+exports.delete = (req, res) => {
     const repo = new GenreRepository(db);
     repo.delete(req.params.id)
         .then(() => {
@@ -61,4 +61,4 @@ exports.create = (req, res) => {
         .catch((err) => {
             res.status(400).json({ error: err.message });
         });
-};*/
+};

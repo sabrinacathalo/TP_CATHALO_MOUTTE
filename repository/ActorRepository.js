@@ -18,7 +18,7 @@ class ActorRepository {
                 }
             });
         });
-    }/*
+    }
     get(id) {
         return new Promise((resolve, reject) => {
             this.database.get('SELECT * FROM actors WHERE id = ?', [id], (err, row) => {

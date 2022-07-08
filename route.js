@@ -1,7 +1,7 @@
 const express = require('express');
 const ActorController = require('./controllers/ActorController');
 const GenreController = require('./controllers/GenreController');
-const FilmController = require('./controllers/FilmController')
+const FilmController = require('./controllers/FilmController');
 
 const router = express.Router();
 
@@ -16,9 +16,9 @@ router.post('/genre', GenreController.create);
 router.delete('/genre/:id', GenreController.delete);
 
 router.get('/film', FilmController.list);
-/*router.get('/film/:id', FilmController.get);
+router.get('/film/:id', FilmController.get);
 router.post('/film', FilmController.create);
-router.put('/film/', FilmController.update);
-router.delete('/film/:id', FilmController.delete);*/
+router.put('/film/:id', FilmController.update);
+router.delete('/film/:id', FilmController.delete);
 
 module.exports = router;

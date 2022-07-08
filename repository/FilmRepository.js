@@ -21,13 +21,13 @@ class FilmRepository {
     }
     get(id) {
         return new Promise((resolve, reject) => {
-            this.database.get('SELECT * FROM film WHERE id = ?', [id], (err, row) => {
+            this.database.get('SELECT * FROM films WHERE id = ?', [id], (err, row) => {
                 if (err) {
                     console.error(err.message);
                     reject(err);
                 } else {
                     resolve(
-                        this.decorator(row),
+                        (row),
                     );
                 }
             });
@@ -37,8 +37,8 @@ class FilmRepository {
     create(data) {
         return new Promise((resolve, reject) => {
             this.database.run(
-                'INSERT INTO film (contents, done) VALUES (?,?)',
-                [data.contents, data.done ? 1 : 0],
+                'INSERT INTO films (name, synopsis, release_year, genre_id ) VALUES (?,?,?,?)',
+                [data.name, data.synopsis, data.release_year, data.genre_id ? 1 : 0],
                 function (err) {
                     if (err) {
                         console.error(err.message);
@@ -54,11 +54,10 @@ class FilmRepository {
     update(id, data) {
         return new Promise((resolve, reject) => {
             this.database.run(
-                `UPDATE film
-                 SET contents = ?,
-                     done = ?
+                `UPDATE films
+                    SET name = ?, synopsis = ?, release_year = ?, genre_id = ?
                  WHERE id = ?`,
-                [data.contents, data.done ? 1 : 0, id],
+                [data.name, data.synopsis, data.release_year, data.genre_id, id],
                 (err) => {
                     if (err) {
                         console.error(err.message);
@@ -74,7 +73,7 @@ class FilmRepository {
     delete(id) {
         return new Promise((resolve, reject) => {
             this.database.run(
-                `DELETE FROM film
+                `DELETE FROM films
                  WHERE id = ?`,
                 [id],
                 (err) => {

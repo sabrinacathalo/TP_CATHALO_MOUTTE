@@ -27,7 +27,7 @@ class FilmRepository {
                     reject(err);
                 } else {
                     resolve(
-                        (row),
+                        row,
                     );
                 }
             });
@@ -37,8 +37,8 @@ class FilmRepository {
     create(data) {
         return new Promise((resolve, reject) => {
             this.database.run(
-                'INSERT INTO films (name, synopsis, release_year, genre_id ) VALUES (?,?,?,?)',
-                [data.name, data.synopsis, data.release_year, data.genre_id ? 1 : 0],
+                'INSERT INTO films (name, synopsis, release_year, genre_id) VALUES (?,?,?,?)',
+                [data.name, data.synopsis, data.release_year, data.genre_id],
                 function (err) {
                     if (err) {
                         console.error(err.message);

@@ -17,7 +17,7 @@ exports.list = (req, res) => {
 
 exports.create = (req, res) => {
     const errors = [];
-    ['contents', 'done'].forEach((field) => {
+    ['name'].forEach((field) => {
         if (!req.body[field]) {
             errors.push(`Field '${field}' is missing from request body`);
         }
@@ -33,8 +33,7 @@ exports.create = (req, res) => {
     const repo = new GenreRepository(db);
 
     repo.create({
-        contents: req.body.contents,
-        done: req.body.done === 'true',
+        name: req.body.name,
     })
         .then((result) => {
             res

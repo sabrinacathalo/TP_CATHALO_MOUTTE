@@ -22,7 +22,7 @@ class GenreRepository {
    create(data) {
         return new Promise((resolve, reject) => {
             this.database.run(
-                'INSERT INTO genres (id, name) VALUES (?,?)',
+                'INSERT INTO genres (name) VALUES (?)',
                 [data.name],
                 function (err) {
                     if (err) {

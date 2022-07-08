@@ -27,7 +27,7 @@ class ActorRepository {
                     reject(err);
                 } else {
                     resolve(
-                        this.decorator(row),
+                        row,
                     );
                 }
             });
@@ -37,8 +37,8 @@ class ActorRepository {
     create(data) {
         return new Promise((resolve, reject) => {
             this.database.run(
-                'INSERT INTO actors (contents, done) VALUES (?,?)',
-                [data.contents, data.done ? 1 : 0],
+                'INSERT INTO actors (first_name, last_name, date_of_birth, date_of_death) VALUES (?,?, ?, ?)',
+                [data.first_name, data.last_name, data.date_of_birth, data.date_of_death],
                 function (err) {
                     if (err) {
                         console.error(err.message);
@@ -55,10 +55,9 @@ class ActorRepository {
         return new Promise((resolve, reject) => {
             this.database.run(
                 `UPDATE actors
-                 SET contents = ?,
-                     done = ?
+                 SET first_name = ?, last_name = ?, date_of_birth = ?, date_of_death = ?
                  WHERE id = ?`,
-                [data.contents, data.done ? 1 : 0, id],
+                [data.first_name, data.last_name, data.date_of_birth, data.date_of_death, id],
                 (err) => {
                     if (err) {
                         console.error(err.message);
